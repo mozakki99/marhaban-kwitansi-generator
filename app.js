@@ -1,7 +1,7 @@
 /**
  * Kwitansi Generator - Amanah Safar Marhaban
  * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
- * Rekening Resmi Pembayaran Sah Banner, LocalStorage Fallback & Offline Resilience
+ * Executive Premier Kop Surat Layout, Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
  */
 
 let currentKwitansiId = null;
@@ -386,10 +386,12 @@ function updatePreview() {
   // Address
   document.getElementById('view-alamat-text').textContent = headerAlamat;
 
-  // Social Media Bar Icons
+  // Social Media Bar Icons & Dividers
   const viewSocialWa = document.getElementById('view-social-wa');
   const viewSocialIg = document.getElementById('view-social-ig');
   const viewSocialTg = document.getElementById('view-social-tg');
+  const viewDiv1 = document.getElementById('view-social-div-1');
+  const viewDiv2 = document.getElementById('view-social-div-2');
 
   if (headerKontak.length > 0) {
     document.getElementById('view-text-wa').textContent = headerKontak;
@@ -410,6 +412,19 @@ function updatePreview() {
     viewSocialTg.style.display = 'inline-flex';
   } else {
     viewSocialTg.style.display = 'none';
+  }
+
+  // Dividers
+  if (headerKontak.length > 0 && headerIg.length > 0) {
+    if (viewDiv1) viewDiv1.style.display = 'inline';
+  } else {
+    if (viewDiv1) viewDiv1.style.display = 'none';
+  }
+
+  if (headerIg.length > 0 && headerTg.length > 0) {
+    if (viewDiv2) viewDiv2.style.display = 'inline';
+  } else {
+    if (viewDiv2) viewDiv2.style.display = 'none';
   }
 
   // STRICT HIDING: PPIU & PIHK Badges
