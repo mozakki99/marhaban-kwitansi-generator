@@ -440,28 +440,30 @@ textarea {
   position: relative;
 }
 
-/* KOP SURAT EXECUTIVE PREMIER */
+/* KOP SURAT PATEN EXECUTIVE PREMIER */
 .kwitansi-header-container {
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 .header-top-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   width: 100%;
+  min-height: 64px;
 }
 
 .brand-identity {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.15rem;
   flex: 1;
+  min-height: 64px;
 }
 
 .kwitansi-logo-large {
-  height: 56px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -475,7 +477,7 @@ textarea {
 }
 
 .company-name-title {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 900;
   color: var(--theme-main);
   letter-spacing: -0.3px;
@@ -512,7 +514,7 @@ textarea {
   background: linear-gradient(135deg, var(--theme-tint) 0%, #ffffff 100%);
   border: 1.5px solid var(--border-color);
   border-right: 4px solid var(--theme-main);
-  padding: 0.5rem 0.95rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   text-align: right;
   width: auto;
@@ -522,6 +524,7 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 60px;
 }
 
 .kwitansi-badge-head {
@@ -547,7 +550,7 @@ textarea {
 
 /* BOTTOM BAR: ALAMAT & HORIZONTAL CONTACTS */
 .header-bottom-bar {
-  margin-top: 0.7rem;
+  margin-top: 0.65rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1065,11 +1068,13 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    min-height: auto;
   }
 
   .brand-identity {
     align-items: flex-start;
     gap: 0.75rem;
+    min-height: auto;
   }
 
   .kwitansi-logo-large {
@@ -1084,6 +1089,7 @@ textarea {
     width: 100%;
     text-align: left;
     min-width: 0;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1195,7 +1201,7 @@ textarea {
 }
 
 /* ==========================================================================
-   PRINT CSS (MANDATORY EXACT MATCH WITH SCREEN PREVIEW)
+   PRINT CSS (MANDATORY EXACT MATCH WITH PATEN SCREEN PREVIEW)
    ========================================================================== */
 @media print {
   @page {
@@ -1273,6 +1279,7 @@ textarea {
     align-items: center !important;
     width: 100% !important;
     gap: 1rem !important;
+    min-height: 56px !important;
   }
 
   .brand-identity {
@@ -1280,10 +1287,11 @@ textarea {
     align-items: center !important;
     gap: 1rem !important;
     flex: 1 !important;
+    min-height: 56px !important;
   }
 
   .kwitansi-logo-large {
-    height: 52px !important;
+    height: 54px !important;
     width: auto !important;
     object-fit: contain !important;
     flex-shrink: 0 !important;
@@ -1297,7 +1305,7 @@ textarea {
   }
 
   .company-name-title {
-    font-size: 1.25rem !important;
+    font-size: 1.3rem !important;
     line-height: 1.15 !important;
     margin: 0 !important;
   }
@@ -1327,6 +1335,7 @@ textarea {
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-end !important;
+    height: 54px !important;
     border-right: 4px solid var(--theme-main) !important;
     border-left: 1.5px solid var(--border-color) !important;
     box-shadow: none !important;
