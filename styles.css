@@ -1194,7 +1194,9 @@ textarea {
   }
 }
 
-/* Print CSS */
+/* ==========================================================================
+   PRINT CSS (MANDATORY EXACT MATCH WITH SCREEN PREVIEW)
+   ========================================================================== */
 @media print {
   @page {
     size: A4 portrait;
@@ -1265,30 +1267,81 @@ textarea {
   }
 
   .header-top-row {
+    display: flex !important;
     flex-direction: row !important;
+    justify-content: space-between !important;
     align-items: center !important;
+    width: 100% !important;
+    gap: 1rem !important;
+  }
+
+  .brand-identity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex: 1 !important;
   }
 
   .kwitansi-logo-large {
-    height: 54px !important;
+    height: 52px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    display: block !important;
+  }
+
+  .brand-text-block {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
   .company-name-title {
     font-size: 1.25rem !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+
+  .company-subhead {
+    font-size: 0.725rem !important;
+    margin-top: 0.1rem !important;
+  }
+
+  .company-badges {
+    display: flex !important;
+    gap: 0.3rem !important;
+    margin-top: 0.2rem !important;
+  }
+
+  .badge-licence {
+    font-size: 0.625rem !important;
+    padding: 0.1rem 0.4rem !important;
   }
 
   .kwitansi-title-card {
-    padding: 0.5rem 0.9rem !important;
-    min-width: auto !important;
+    padding: 0.45rem 0.85rem !important;
     width: auto !important;
+    min-width: max-content !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
     flex-direction: column !important;
+    justify-content: center !important;
     align-items: flex-end !important;
     border-right: 4px solid var(--theme-main) !important;
     border-left: 1.5px solid var(--border-color) !important;
+    box-shadow: none !important;
   }
 
   .kwitansi-badge-head {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
+  }
+
+  .kwitansi-no-tag {
+    font-size: 0.775rem !important;
+  }
+
+  .kwitansi-date-tag {
+    font-size: 0.675rem !important;
   }
 
   .header-bottom-bar {
