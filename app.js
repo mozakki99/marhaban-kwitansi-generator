@@ -1,7 +1,8 @@
 /**
  * Kwitansi & Invoice Generator - Marhaban Tour
  * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
- * Executive Premier Kop Surat Layout, INVOICE Badge, Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
+ * Executive Premier Kop Surat Layout (Logo Samping + Kolom Teks Rata Kiri Terpadu), INVOICE Badge,
+ * Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
  */
 
 let currentKwitansiId = null;
@@ -377,7 +378,7 @@ function updatePreview() {
   const viewHeaderSub = document.getElementById('view-header-sub');
   if (headerSub.length > 0) {
     viewHeaderSub.textContent = headerSub;
-    viewHeaderSub.style.display = 'block';
+    viewHeaderSub.style.display = 'inline';
   } else {
     viewHeaderSub.textContent = '';
     viewHeaderSub.style.display = 'none';
@@ -386,12 +387,10 @@ function updatePreview() {
   // Address
   document.getElementById('view-alamat-text').textContent = headerAlamat;
 
-  // Social Media Bar Icons & Dividers
+  // Social Media Bar Icons
   const viewSocialWa = document.getElementById('view-social-wa');
   const viewSocialIg = document.getElementById('view-social-ig');
   const viewSocialTg = document.getElementById('view-social-tg');
-  const viewDiv1 = document.getElementById('view-social-div-1');
-  const viewDiv2 = document.getElementById('view-social-div-2');
 
   if (headerKontak.length > 0) {
     document.getElementById('view-text-wa').textContent = headerKontak;
@@ -412,19 +411,6 @@ function updatePreview() {
     viewSocialTg.style.display = 'inline-flex';
   } else {
     viewSocialTg.style.display = 'none';
-  }
-
-  // Dividers
-  if (headerKontak.length > 0 && headerIg.length > 0) {
-    if (viewDiv1) viewDiv1.style.display = 'inline';
-  } else {
-    if (viewDiv1) viewDiv1.style.display = 'none';
-  }
-
-  if (headerIg.length > 0 && headerTg.length > 0) {
-    if (viewDiv2) viewDiv2.style.display = 'inline';
-  } else {
-    if (viewDiv2) viewDiv2.style.display = 'none';
   }
 
   // STRICT HIDING: PPIU & PIHK Badges
@@ -448,7 +434,7 @@ function updatePreview() {
     pihkBadge.style.display = 'none';
   }
 
-  if (headerPpiu.length === 0 && headerPihk.length === 0) {
+  if (headerSub.length === 0 && headerPpiu.length === 0 && headerPihk.length === 0) {
     badgesContainer.style.display = 'none';
   } else {
     badgesContainer.style.display = 'flex';
@@ -806,7 +792,7 @@ function renderHistoryTable(filterText = '') {
       <td><span class="${item.status === 'LUNAS' ? 'badge-status-preview badge-lunas' : 'badge-status-preview badge-dp'}">${item.status}</span></td>
       <td>
         <button class="btn btn-outline" style="padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="loadKwitansi('${item.id}')">✏️ Buka</button>
-        <button class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem; background:#ef4444; border:none;" onclick="hapusKwitansi('${item.id}')">🗑️</button>
+        <button class="btn btn-secondary" style="padding:0.25rem 0.6rem; font-size:0.75rem; background:#ef4444; border:none;" onclick="hapusKwaitansi('${item.id}')">🗑️</button>
       </td>
     `;
     tbody.appendChild(tr);

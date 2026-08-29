@@ -440,42 +440,44 @@ textarea {
   position: relative;
 }
 
-/* KOP SURAT PATEN PROPORSI TINGGI - MARHABAN TOUR */
+/* KOP SURAT PERFECT (LOGO SAMPING + KOLOM TEKS TERPADU RATA KIRI) */
 .kwitansi-header-container {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
-.header-top-row {
+.header-main-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   width: 100%;
 }
 
-.brand-identity {
+.header-brand-section {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   flex: 1;
 }
 
-.kwitansi-logo-large {
-  height: 48px;
+.kwitansi-logo-sidebar {
+  height: 64px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
 }
 
-.brand-text-block {
+.header-text-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.15rem;
+  text-align: left;
 }
 
 .company-name-title {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 900;
   color: var(--theme-main);
   letter-spacing: -0.3px;
@@ -483,19 +485,19 @@ textarea {
   margin: 0;
 }
 
+.company-subhead-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.05rem;
+}
+
 .company-subhead {
   font-size: 0.75rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: 0.5px;
-  margin-top: 0.1rem;
-}
-
-.company-badges {
-  display: flex;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-  margin-top: 0.2rem;
 }
 
 .badge-licence {
@@ -508,66 +510,19 @@ textarea {
   font-weight: 700;
 }
 
-.kwitansi-title-card {
-  background: linear-gradient(135deg, var(--theme-tint) 0%, #ffffff 100%);
-  border: 1.5px solid var(--border-color);
-  border-right: 4px solid var(--theme-main);
-  padding: 0.4rem 0.85rem;
-  border-radius: 8px;
-  text-align: right;
-  width: auto;
-  min-width: max-content;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.kwitansi-badge-head {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--theme-main);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.kwitansi-no-tag {
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--theme-darkest);
-  margin-top: 0.05rem;
-}
-
-.kwitansi-date-tag {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 0.05rem;
-}
-
-/* BOTTOM BAR: ALAMAT & HORIZONTAL CONTACTS (RAPAT & PRESISI) */
-.header-bottom-bar {
-  margin-top: 0.35rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem 1rem;
-  font-size: 0.725rem;
-  color: var(--text-muted);
-}
-
 .contact-alamat {
   font-size: 0.725rem;
   color: var(--text-muted);
   font-weight: 500;
+  line-height: 1.25;
 }
 
 .social-contact-inline-bar {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
+  margin-top: 0.1rem;
 }
 
 .social-item-inline {
@@ -597,18 +552,49 @@ textarea {
   color: #0088cc;
 }
 
-.social-divider {
-  color: var(--gold-main);
-  font-weight: 900;
-  font-size: 0.75rem;
-}
-
 .header-double-line {
   height: 3px;
   border-top: 2px solid var(--theme-main);
   border-bottom: 1px solid var(--gold-main);
-  margin-top: 0.4rem;
-  margin-bottom: 1rem;
+  margin-top: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.kwitansi-title-card {
+  background: linear-gradient(135deg, var(--theme-tint) 0%, #ffffff 100%);
+  border: 1.5px solid var(--border-color);
+  border-right: 4px solid var(--theme-main);
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  text-align: right;
+  width: auto;
+  min-width: max-content;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kwitansi-badge-head {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--theme-main);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.kwitansi-no-tag {
+  font-size: 0.825rem;
+  font-weight: 800;
+  color: var(--theme-darkest);
+  margin-top: 0.05rem;
+}
+
+.kwitansi-date-tag {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.05rem;
 }
 
 /* CLEAN, ULTRA-READABLE BODY DATA ROWS */
@@ -1061,23 +1047,23 @@ textarea {
     padding: 1.25rem 1rem;
   }
 
-  .header-top-row {
+  .header-main-flex {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
 
-  .brand-identity {
+  .header-brand-section {
     align-items: flex-start;
     gap: 0.75rem;
   }
 
-  .kwitansi-logo-large {
-    height: 44px;
+  .kwitansi-logo-sidebar {
+    height: 48px;
   }
 
   .company-name-title {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
   .kwitansi-title-card {
@@ -1093,12 +1079,6 @@ textarea {
 
   .kwitansi-badge-head {
     font-size: 1.1rem;
-  }
-
-  .header-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
   }
 
   .info-row {
@@ -1186,7 +1166,7 @@ textarea {
   }
 
   .social-contact-inline-bar {
-    gap: 0.35rem;
+    gap: 0.45rem;
   }
 
   .social-divider {
@@ -1195,7 +1175,7 @@ textarea {
 }
 
 /* ==========================================================================
-   PRINT CSS (COMPACT MARHABAN TOUR PATEN MATCH)
+   PRINT CSS (PERFECT MATCH WITH UNIFIED LEFT TEXT COLUMN PREVIEW)
    ========================================================================== */
 @media print {
   @page {
@@ -1263,10 +1243,10 @@ textarea {
   }
 
   .kwitansi-header-container {
-    margin-bottom: 0.65rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
-  .header-top-row {
+  .header-main-flex {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
@@ -1275,51 +1255,49 @@ textarea {
     gap: 1rem !important;
   }
 
-  .brand-identity {
+  .header-brand-section {
     display: flex !important;
     align-items: center !important;
     gap: 1rem !important;
     flex: 1 !important;
   }
 
-  .kwitansi-logo-large {
-    height: 44px !important;
+  .kwitansi-logo-sidebar {
+    height: 56px !important;
     width: auto !important;
     object-fit: contain !important;
     flex-shrink: 0 !important;
     display: block !important;
   }
 
-  .brand-text-block {
+  .header-text-column {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+    text-align: left !important;
+    gap: 0.1rem !important;
   }
 
   .company-name-title {
-    font-size: 1.25rem !important;
+    font-size: 1.3rem !important;
     line-height: 1.15 !important;
     margin: 0 !important;
   }
 
   .company-subhead {
     font-size: 0.725rem !important;
-    margin-top: 0.05rem !important;
   }
 
-  .company-badges {
-    display: flex !important;
-    gap: 0.3rem !important;
-    margin-top: 0.15rem !important;
+  .contact-alamat {
+    font-size: 0.685rem !important;
   }
 
-  .badge-licence {
-    font-size: 0.625rem !important;
-    padding: 0.1rem 0.4rem !important;
+  .social-item-inline {
+    font-size: 0.685rem !important;
   }
 
   .kwitansi-title-card {
-    padding: 0.35rem 0.75rem !important;
+    padding: 0.45rem 0.85rem !important;
     width: auto !important;
     min-width: max-content !important;
     flex-shrink: 0 !important;
@@ -1344,24 +1322,8 @@ textarea {
     font-size: 0.65rem !important;
   }
 
-  .header-bottom-bar {
-    margin-top: 0.3rem !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    font-size: 0.685rem !important;
-  }
-
-  .contact-alamat {
-    font-size: 0.685rem !important;
-  }
-
-  .social-item-inline {
-    font-size: 0.685rem !important;
-  }
-
   .header-double-line {
-    margin-top: 0.35rem !important;
+    margin-top: 0.4rem !important;
     margin-bottom: 0.85rem !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
