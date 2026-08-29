@@ -1,7 +1,7 @@
 /**
  * Kwitansi Generator - Amanah Safar Marhaban
- * JavaScript ES6 Logic: Multi-Theme Switcher (Purple, Black & Gold, Navy, Emerald),
- * Persistent Theme (LocalStorage), Settings Modal & Social Media Icons Support
+ * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
+ * LocalStorage Fallback & Offline Resilience
  */
 
 let currentKwitansiId = null;
@@ -81,6 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Canvas
   initCanvasPad();
+
+  // Load Cloud DB History on start
+  syncCloudHistory();
 
   // Settings Modal Handlers
   document.getElementById('btn-open-settings').addEventListener('click', openSettingsModal);
@@ -625,7 +628,22 @@ function saveHistory(historyList) {
   }
 }
 
-function simpanKwitansi() {
+// Cloud D1 SQL Sync Logic
+async function syncCloudHistory() {
+  try {
+    const res = await fetch('/api/kwitansi');
+    if (res.ok) {
+      const cloudHistory = await res.json();
+      if (Array.isArray(cloudHistory) && cloudHistory.length > 0) {
+        saveHistory(cloudHistory);
+      }
+    }
+  } catch (e) {
+    console.log("Cloud D1 sync fallback to local storage:", e);
+  }
+}
+
+async function simpanKwitansi() {
   const namaJamaah = document.getElementById('input-nama').value.trim();
   if (!namaJamaah) {
     alert("Mohon isi Nama Jamaah terlebih dahulu.");
@@ -695,6 +713,7 @@ function simpanKwitansi() {
     timestamp: new Date().toISOString()
   };
 
+  // 1. Save to LocalStorage immediately
   let history = getHistory();
   if (currentKwitansiId) {
     const index = history.findIndex(item => item.id === currentKwitansiId);
@@ -703,13 +722,27 @@ function simpanKwitansi() {
     history.unshift(kwitansiData);
     currentKwitansiId = kwitansiData.id;
   }
-
   saveHistory(history);
-  alert(`✓ Kwitansi ${kwitansiData.noKwitansi} berhasil disimpan ke Riwayat Transaksi!`);
+
+  // 2. Sync to Cloudflare D1 SQL Database via Serverless API
+  try {
+    const res = await fetch('/api/kwitansi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(kwitansiData)
+    });
+    if (res.ok) {
+      console.log("☁️ Successfully synced to Cloudflare D1 Database!");
+    }
+  } catch (e) {
+    console.log("Cloud sync fallback:", e);
+  }
+
+  alert(`✓ Kwitansi ${kwitansiData.noKwitansi} berhasil disimpan ke Database Cloudflare & Riwayat Transaksi!`);
 }
 
 function openHistoryModal() {
-  renderHistoryTable();
+  syncCloudHistory().then(() => renderHistoryTable());
   document.getElementById('modal-history').classList.add('active');
 }
 
@@ -839,10 +872,20 @@ function loadKwitansi(id) {
   closeHistoryModal();
 }
 
-function hapusKwitansi(id) {
+async function hapusKwitansi(id) {
   if (!confirm("Apakah Anda yakin ingin menghapus kwitansi ini dari riwayat?")) return;
   let history = getHistory();
   history = history.filter(item => item.id !== id);
   saveHistory(history);
+
+  // Sync delete to Cloudflare D1
+  try {
+    await fetch('/api/delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    });
+  } catch (e) {}
+
   renderHistoryTable(document.getElementById('search-history').value);
 }

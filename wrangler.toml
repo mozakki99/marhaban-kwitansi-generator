@@ -1,0 +1,7 @@
+name = "marhaban-kwitansi"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "marhaban-db"
+database_id = "459c74e4-d253-480a-ba54-ab64859b6598"
