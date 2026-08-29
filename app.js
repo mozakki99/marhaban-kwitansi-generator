@@ -1,7 +1,7 @@
 /**
  * Kwitansi Generator - Amanah Safar Marhaban
  * JavaScript ES6 Logic: Multi-Theme Switcher (Purple, Black & Gold, Navy, Emerald),
- * Settings Modal & Social Media Icons (WA, IG, TG) Support
+ * Persistent Theme (LocalStorage), Settings Modal & Social Media Icons Support
  */
 
 let currentKwitansiId = null;
@@ -74,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('input-tanggal').value = today;
   document.getElementById('input-no-kwitansi').value = generateNoKwitansi();
+
+  // Restore Last Saved Theme from LocalStorage
+  const savedTheme = localStorage.getItem('marhaban_saved_theme') || 'purple';
+  setTheme(savedTheme);
 
   // Initialize Canvas
   initCanvasPad();
@@ -151,10 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePreview();
 });
 
-// Theme Switcher Logic
+// Theme Switcher & Persistence Logic
 function setTheme(themeName) {
   currentTheme = themeName;
   document.documentElement.setAttribute('data-theme', themeName);
+  try {
+    localStorage.setItem('marhaban_saved_theme', themeName);
+  } catch (e) {}
+
+  // Update Active Theme Card State in Modal
+  const themeCards = document.querySelectorAll('.theme-card');
+  themeCards.forEach(c => {
+    if (c.getAttribute('data-theme-val') === themeName) {
+      c.classList.add('active');
+    } else {
+      c.classList.remove('active');
+    }
+  });
 }
 
 function openSettingsModal() {
@@ -757,11 +774,6 @@ function loadKwitansi(id) {
   
   if (item.theme) {
     setTheme(item.theme);
-    const themeCards = document.querySelectorAll('.theme-card');
-    themeCards.forEach(c => {
-      if (c.getAttribute('data-theme-val') === item.theme) c.classList.add('active');
-      else c.classList.remove('active');
-    });
   }
 
   if (item.headerBrand) document.getElementById('input-header-brand').value = item.headerBrand;
