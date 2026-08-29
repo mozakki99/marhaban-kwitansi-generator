@@ -1,7 +1,7 @@
 /**
  * Kwitansi Generator - Amanah Safar Marhaban
  * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
- * LocalStorage Fallback & Offline Resilience
+ * Rekening Resmi Pembayaran Sah Banner, LocalStorage Fallback & Offline Resilience
  */
 
 let currentKwitansiId = null;
@@ -368,6 +368,7 @@ function updatePreview() {
   const headerKontak = document.getElementById('input-header-kontak').value.trim() || '-';
   const headerIg = document.getElementById('input-header-ig').value.trim() || '@marhabantour';
   const headerTg = document.getElementById('input-header-tg').value.trim() || '@marhabantour';
+  const headerRekening = document.getElementById('input-header-rekening').value.trim();
 
   // Render Header Kwitansi Brand
   document.getElementById('view-header-brand').textContent = headerBrand;
@@ -436,6 +437,16 @@ function updatePreview() {
     badgesContainer.style.display = 'none';
   } else {
     badgesContainer.style.display = 'flex';
+  }
+
+  // Rekening Resmi Pembayaran Banner
+  const bankBanner = document.getElementById('view-bank-banner');
+  const bankDetails = document.getElementById('view-bank-details');
+  if (headerRekening.length > 0) {
+    bankDetails.textContent = headerRekening;
+    bankBanner.style.display = 'flex';
+  } else {
+    bankBanner.style.display = 'none';
   }
 
   // App Header Sync
@@ -690,6 +701,7 @@ async function simpanKwitansi() {
     headerKontak: document.getElementById('input-header-kontak').value,
     headerIg: document.getElementById('input-header-ig').value,
     headerTg: document.getElementById('input-header-tg').value,
+    headerRekening: document.getElementById('input-header-rekening').value,
     logoDataUrl: customLogoDataUrl,
 
     ttdKasirNama: document.getElementById('input-ttd-nama').value,
@@ -817,6 +829,7 @@ function loadKwitansi(id) {
   if (item.headerKontak) document.getElementById('input-header-kontak').value = item.headerKontak;
   if (item.headerIg !== undefined) document.getElementById('input-header-ig').value = item.headerIg;
   if (item.headerTg !== undefined) document.getElementById('input-header-tg').value = item.headerTg;
+  document.getElementById('input-header-rekening').value = item.headerRekening !== undefined ? item.headerRekening : 'Bank Mandiri: PT Ardhana Putra Marhaban 144-00-5000045-1';
   
   if (item.logoDataUrl) {
     customLogoDataUrl = item.logoDataUrl;

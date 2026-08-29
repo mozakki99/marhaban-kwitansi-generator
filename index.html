@@ -393,6 +393,21 @@
               </tbody>
             </table>
 
+            <!-- BANNER REKENING RESMI PEMBAYARAN SAH -->
+            <div class="bank-account-banner" id="view-bank-banner">
+              <div class="bank-icon-box">
+                <svg class="bank-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                </svg>
+              </div>
+              <div class="bank-info-text">
+                <span class="bank-label">PERHATIAN - REKENING RESMI PEMBAYARAN SAH:</span>
+                <div class="bank-details">
+                  Pembayaran dianggap sah hanya jika ditransfer ke <strong id="view-bank-details">Bank Mandiri: PT Ardhana Putra Marhaban 144-00-5000045-1</strong>
+                </div>
+              </div>
+            </div>
+
             <div class="info-row">
               <span class="info-label">Catatan Tambahan</span>
               <span class="info-colon">:</span>
@@ -539,6 +554,15 @@
         <div class="form-group">
           <label for="input-header-tg">Telegram (@handle / link)</label>
           <input type="text" id="input-header-tg" value="@marhabantour">
+        </div>
+
+        <!-- SECTION REKENING RESMI PEMBAYARAN -->
+        <div style="font-weight: 800; color: var(--theme-main); margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 1rem;">
+          💳 Rekening Resmi Pembayaran Sah (Tampil di Kwitansi)
+        </div>
+        <div class="form-group">
+          <label for="input-header-rekening">Info Bank & Nomor Rekening (Kosongkan jika dihapus total)</label>
+          <input type="text" id="input-header-rekening" value="Bank Mandiri: PT Ardhana Putra Marhaban 144-00-5000045-1" placeholder="Misal: Bank Mandiri: PT Ardhana Putra Marhaban 144-00-5000045-1">
         </div>
 
         <div class="form-group">

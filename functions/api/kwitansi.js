@@ -29,6 +29,7 @@ export async function onRequestGet(context) {
       headerKontak: row.header_kontak,
       headerIg: row.header_ig,
       headerTg: row.header_tg,
+      headerRekening: row.header_rekening,
       logoDataUrl: row.logo_data_url,
       ttdKasirNama: row.ttd_kasir_nama,
       ttdKasirDataUrl: row.ttd_kasir_data_url,
@@ -73,14 +74,14 @@ export async function onRequestPost(context) {
     await env.DB.prepare(`
       INSERT INTO kwitansi (
         id, no_kwitansi, tanggal, nama_jamaah, no_wa, paket, program, kamar, theme,
-        header_brand, header_sub, header_ppiu, header_pihk, header_alamat, header_kontak, header_ig, header_tg,
+        header_brand, header_sub, header_ppiu, header_pihk, header_alamat, header_kontak, header_ig, header_tg, header_rekening,
         logo_data_url, ttd_kasir_nama, ttd_kasir_data_url, stempel_data_url,
         pax_dewasa, harga_dewasa, pax_bayi, harga_bayi, biaya_tambahan,
         total_harga, nominal_bayar, kekurangan, jenis_bayar, metode, catatan, status,
         checkboxes, custom_fas
       ) VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?, ?,
-        ?, ?, ?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?,
         ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?,
@@ -102,6 +103,7 @@ export async function onRequestPost(context) {
         header_kontak = excluded.header_kontak,
         header_ig = excluded.header_ig,
         header_tg = excluded.header_tg,
+        header_rekening = excluded.header_rekening,
         logo_data_url = excluded.logo_data_url,
         ttd_kasir_nama = excluded.ttd_kasir_nama,
         ttd_kasir_data_url = excluded.ttd_kasir_data_url,
@@ -110,7 +112,7 @@ export async function onRequestPost(context) {
         harga_dewasa = excluded.harga_dewasa,
         pax_bayi = excluded.pax_bayi,
         harga_bayi = excluded.harga_bayi,
-        biaya_tambahan = excluded.biaya_tambahan,
+        biayaTambahan = excluded.biaya_tambahan,
         total_harga = excluded.total_harga,
         nominal_bayar = excluded.nominal_bayar,
         kekurangan = excluded.kekurangan,
@@ -122,7 +124,7 @@ export async function onRequestPost(context) {
         custom_fas = excluded.custom_fas
     `).bind(
       id, data.noKwitansi, data.tanggal, data.namaJamaah, data.noWa, data.paket, data.program, data.kamar, data.theme,
-      data.headerBrand, data.headerSub, data.headerPpiu, data.headerPihk, data.headerAlamat, data.headerKontak, data.headerIg, data.headerTg,
+      data.headerBrand, data.headerSub, data.headerPpiu, data.headerPihk, data.headerAlamat, data.headerKontak, data.headerIg, data.headerTg, data.headerRekening,
       data.logoDataUrl, data.ttdKasirNama, data.ttdKasirDataUrl, data.stempelDataUrl,
       data.paxDewasa, data.hargaDewasa, data.paxBayi, data.hargaBayi, data.biayaTambahan,
       data.totalHarga, data.nominalBayar, data.kekurangan, data.jenisBayar, data.metode, data.catatan, data.status,
