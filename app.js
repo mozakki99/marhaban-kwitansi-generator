@@ -1,5 +1,5 @@
 /**
- * Kwitansi & Invoice Generator - Amanah Safar Marhaban
+ * Kwitansi & Invoice Generator - Marhaban Tour
  * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
  * Executive Premier Kop Surat Layout, INVOICE Badge, Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
  */
@@ -360,7 +360,7 @@ function updatePreview() {
   const tipeKamar = document.getElementById('input-kamar').value || 'Quad (Ber-4)';
 
   // Editable Header Details
-  const headerBrand = document.getElementById('input-header-brand').value.trim() || 'Amanah Safar Marhaban';
+  const headerBrand = document.getElementById('input-header-brand').value.trim() || 'Marhaban Tour';
   const headerSub = document.getElementById('input-header-sub').value.trim();
   const headerPpiu = document.getElementById('input-header-ppiu').value.trim();
   const headerPihk = document.getElementById('input-header-pihk').value.trim();

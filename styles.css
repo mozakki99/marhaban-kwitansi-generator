@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Kwitansi Generator - Amanah Safar Marhaban
+   Kwitansi Generator - Amanah Safar Marhaban / Marhaban Tour
    Theme System, Executive Premier Layout & Mobile Responsive Optimization
    Themes:
    1. Royal Purple & Amber (#532380 & #F59E0B) - Website Sekarang
@@ -436,34 +436,32 @@ textarea {
 }
 
 .kwitansi-content-wrapper {
-  padding: 2.25rem 2.6rem;
+  padding: 2rem 2.4rem;
   position: relative;
 }
 
-/* KOP SURAT PATEN EXECUTIVE PREMIER */
+/* KOP SURAT PATEN PROPORSI TINGGI - MARHABAN TOUR */
 .kwitansi-header-container {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .header-top-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   width: 100%;
-  min-height: 64px;
 }
 
 .brand-identity {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1rem;
   flex: 1;
-  min-height: 64px;
 }
 
 .kwitansi-logo-large {
-  height: 60px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -477,7 +475,7 @@ textarea {
 }
 
 .company-name-title {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 900;
   color: var(--theme-main);
   letter-spacing: -0.3px;
@@ -486,27 +484,27 @@ textarea {
 }
 
 .company-subhead {
-  font-size: 0.775rem;
+  font-size: 0.75rem;
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: 0.5px;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 .company-badges {
   display: flex;
   gap: 0.35rem;
   flex-wrap: wrap;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .badge-licence {
   background: var(--theme-tint);
   color: var(--theme-main);
   border: 1px solid var(--border-color);
-  padding: 0.125rem 0.5rem;
+  padding: 0.1rem 0.45rem;
   border-radius: 4px;
-  font-size: 0.675rem;
+  font-size: 0.65rem;
   font-weight: 700;
 }
 
@@ -514,7 +512,7 @@ textarea {
   background: linear-gradient(135deg, var(--theme-tint) 0%, #ffffff 100%);
   border: 1.5px solid var(--border-color);
   border-right: 4px solid var(--theme-main);
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.85rem;
   border-radius: 8px;
   text-align: right;
   width: auto;
@@ -524,11 +522,10 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 60px;
 }
 
 .kwitansi-badge-head {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 900;
   color: var(--theme-main);
   letter-spacing: 2px;
@@ -536,26 +533,26 @@ textarea {
 }
 
 .kwitansi-no-tag {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 800;
   color: var(--theme-darkest);
-  margin-top: 0.1rem;
+  margin-top: 0.05rem;
 }
 
 .kwitansi-date-tag {
-  font-size: 0.715rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
-  margin-top: 0.1rem;
+  margin-top: 0.05rem;
 }
 
-/* BOTTOM BAR: ALAMAT & HORIZONTAL CONTACTS */
+/* BOTTOM BAR: ALAMAT & HORIZONTAL CONTACTS (RAPAT & PRESISI) */
 .header-bottom-bar {
-  margin-top: 0.65rem;
+  margin-top: 0.35rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
+  gap: 0.35rem 1rem;
   font-size: 0.725rem;
   color: var(--text-muted);
 }
@@ -610,8 +607,8 @@ textarea {
   height: 3px;
   border-top: 2px solid var(--theme-main);
   border-bottom: 1px solid var(--gold-main);
-  margin-top: 0.55rem;
-  margin-bottom: 1.1rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
 }
 
 /* CLEAN, ULTRA-READABLE BODY DATA ROWS */
@@ -1068,17 +1065,15 @@ textarea {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-    min-height: auto;
   }
 
   .brand-identity {
     align-items: flex-start;
     gap: 0.75rem;
-    min-height: auto;
   }
 
   .kwitansi-logo-large {
-    height: 48px;
+    height: 44px;
   }
 
   .company-name-title {
@@ -1089,7 +1084,6 @@ textarea {
     width: 100%;
     text-align: left;
     min-width: 0;
-    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1201,7 +1195,7 @@ textarea {
 }
 
 /* ==========================================================================
-   PRINT CSS (MANDATORY EXACT MATCH WITH PATEN SCREEN PREVIEW)
+   PRINT CSS (COMPACT MARHABAN TOUR PATEN MATCH)
    ========================================================================== */
 @media print {
   @page {
@@ -1269,7 +1263,7 @@ textarea {
   }
 
   .kwitansi-header-container {
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.65rem !important;
   }
 
   .header-top-row {
@@ -1279,7 +1273,6 @@ textarea {
     align-items: center !important;
     width: 100% !important;
     gap: 1rem !important;
-    min-height: 56px !important;
   }
 
   .brand-identity {
@@ -1287,11 +1280,10 @@ textarea {
     align-items: center !important;
     gap: 1rem !important;
     flex: 1 !important;
-    min-height: 56px !important;
   }
 
   .kwitansi-logo-large {
-    height: 54px !important;
+    height: 44px !important;
     width: auto !important;
     object-fit: contain !important;
     flex-shrink: 0 !important;
@@ -1305,20 +1297,20 @@ textarea {
   }
 
   .company-name-title {
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important;
     line-height: 1.15 !important;
     margin: 0 !important;
   }
 
   .company-subhead {
     font-size: 0.725rem !important;
-    margin-top: 0.1rem !important;
+    margin-top: 0.05rem !important;
   }
 
   .company-badges {
     display: flex !important;
     gap: 0.3rem !important;
-    margin-top: 0.2rem !important;
+    margin-top: 0.15rem !important;
   }
 
   .badge-licence {
@@ -1327,7 +1319,7 @@ textarea {
   }
 
   .kwitansi-title-card {
-    padding: 0.45rem 0.85rem !important;
+    padding: 0.35rem 0.75rem !important;
     width: auto !important;
     min-width: max-content !important;
     flex-shrink: 0 !important;
@@ -1335,26 +1327,25 @@ textarea {
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-end !important;
-    height: 54px !important;
     border-right: 4px solid var(--theme-main) !important;
     border-left: 1.5px solid var(--border-color) !important;
     box-shadow: none !important;
   }
 
   .kwitansi-badge-head {
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
   }
 
   .kwitansi-no-tag {
-    font-size: 0.775rem !important;
+    font-size: 0.75rem !important;
   }
 
   .kwitansi-date-tag {
-    font-size: 0.675rem !important;
+    font-size: 0.65rem !important;
   }
 
   .header-bottom-bar {
-    margin-top: 0.45rem !important;
+    margin-top: 0.3rem !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
