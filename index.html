@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kwitansi Generator - Amanah Safar Marhaban</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       APP HEADER
+       ========================================== -->
+  <header class="app-header">
+    <div class="brand-container">
+      <img src="marhaban.png" id="app-header-logo" alt="Marhaban Logo" class="brand-logo-header">
+      <div class="brand-title-group">
+        <h1 id="app-header-title">Amanah Safar Marhaban</h1>
+        <p id="app-header-sub">PT Amanah Tangguh Mandiri | PPIU: 23022300424760012 | PIHK: 23022300424760013</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="btn-open-settings">⚙️ Pengaturan Kop & Tema</button>
+      <button class="btn btn-secondary" id="btn-new">➕ Kwitansi Baru</button>
+      <button class="btn btn-secondary" id="btn-history">📋 Riwayat</button>
+      <button class="btn btn-gold" id="btn-save">💾 Simpan</button>
+      <button class="btn btn-primary" id="btn-print">🖨️ Cetak / PDF</button>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN CONTAINER (SPLIT FORM & PREVIEW)
+       ========================================== -->
+  <main class="main-container">
+    
+    <!-- LEFT SIDEBAR: INPUT FORM -->
+    <section class="form-card no-print">
+      <form id="kwitansi-form" onsubmit="return false;">
+        
+        <!-- CARD 1: DATA TRANSAKSI -->
+        <div class="form-group-card">
+          <div class="section-title">
+            <span>📄</span> Data Transaksi Kwitansi
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-no-kwitansi">No. Kwitansi</label>
+              <input type="text" id="input-no-kwitansi" placeholder="KW/MRH/2026/08/001">
+            </div>
+            <div class="form-group">
+              <label for="input-tanggal">Tanggal Transaksi</label>
+              <input type="date" id="input-tanggal">
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: DATA JAMAAH -->
+        <div class="form-group-card">
+          <div class="section-title">
+            <span>👤</span> Data Jamaah / Pembayar
+          </div>
+          <div class="form-group">
+            <label for="input-nama">Nama Lengkap Jamaah *</label>
+            <input type="text" id="input-nama" placeholder="Contoh: Bpk. H. Ahmad Subandi" required>
+          </div>
+          <div class="form-group">
+            <label for="input-wa">Nomor WhatsApp / Telepon</label>
+            <input type="text" id="input-wa" placeholder="0821-3232-3030">
+          </div>
+        </div>
+
+        <!-- CARD 3: PAKET & KAMAR -->
+        <div class="form-group-card">
+          <div class="section-title">
+            <span>🕋</span> Pilihan Paket & Tipe Kamar
+          </div>
+          <div class="form-group">
+            <label for="input-paket">Nama / Pilihan Paket Umrah</label>
+            <select id="input-paket">
+              <option value="Umrah Reguler Direct Flight (9 Hari)">Umrah Reguler Direct Flight (9 Hari)</option>
+              <option value="Umrah VIP Direct Haram (12 Hari)">Umrah VIP Direct Haram (12 Hari)</option>
+              <option value="Umrah Private VIP Family (Custom Schedule)">Umrah Private VIP Family (Custom Schedule)</option>
+              <option value="Paket Custom / Umrah Mandiri">Paket Custom / Umrah Mandiri</option>
+              <option value="Haji Khusus / Haji Furoda VIP">Haji Khusus / Haji Furoda VIP</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-program">Durasi Hari</label>
+              <input type="text" id="input-program" placeholder="9 Hari" value="9 Hari">
+            </div>
+            <div class="form-group">
+              <label for="input-kamar">Tipe Kamar</label>
+              <select id="input-kamar">
+                <option value="Quad (Sekamar Berempat)">Quad (Ber-4)</option>
+                <option value="Triple (Sekamar Bertiga)">Triple (Ber-3)</option>
+                <option value="Double (Sekamar Berdua)">Double (Ber-2)</option>
+                <option value="Single (Sekamar Sendiri)">Single (Ber-1)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: FASILITAS TERMASUK -->
+        <div class="form-group-card">
+          <div class="section-title" style="justify-content: space-between;">
+            <span>✨ Fasilitas Termasuk</span>
+            <button type="button" class="btn btn-outline" id="btn-add-fasilitas" style="padding: 0.25rem 0.5rem; font-size: 0.725rem;">+ Tambah Fasilitas</button>
+          </div>
+
+          <div id="fasilitas-checkbox-grid" class="checkbox-grid">
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Hotel Makkah Near Haram" checked> Hotel Makkah
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Hotel Madinah Near Nabawi" checked> Hotel Madinah
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Tiket Pesawat PP (Direct Flight)" checked> Tiket Pesawat PP
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Visa Umrah & Handling Bandara" checked> Visa & Handling
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Bus Executive AC VIP" checked> Bus Executive AC
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Catering Menu Nusantara 3x Sehari" checked> Catering Menu 3x
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Muthawwif & Tour Leader 24 Jam" checked> Muthawwif 24 Jam
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Perlengkapan Umrah Exclusive" checked> Perlengkapan Umrah
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Air Zamzam 5 Liter Resmi" checked> Air Zamzam 5L
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="fasilitas" value="Bimbingan Manasik Ibadah" checked> Bimbingan Manasik
+            </label>
+          </div>
+
+          <!-- Dynamic Custom Facilities Container -->
+          <div id="dynamic-fasilitas-container" style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+            <!-- Custom items inserted here -->
+          </div>
+        </div>
+
+        <!-- CARD 5: RINCIAN JAMAAH & KEUANGAN -->
+        <div class="form-group-card">
+          <div class="section-title">
+            <span>💰</span> Jumlah Pax & Rincian Keuangan
+          </div>
+          
+          <!-- Jamaah Dewasa Pax & Harga -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-pax-dewasa">Pax Dewasa</label>
+              <input type="number" id="input-pax-dewasa" value="1" min="1">
+            </div>
+            <div class="form-group">
+              <label for="input-harga-dewasa">Harga / Dewasa (IDR)</label>
+              <div class="input-prefix">
+                <span>Rp</span>
+                <input type="number" id="input-harga-dewasa" value="35000000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Jamaah Bayi Infant Pax & Harga -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-pax-bayi">Bayi (0-2 Thn)</label>
+              <input type="number" id="input-pax-bayi" value="0" min="0">
+            </div>
+            <div class="form-group">
+              <label for="input-harga-bayi">Harga / Bayi (IDR)</label>
+              <div class="input-prefix">
+                <span>Rp</span>
+                <input type="number" id="input-harga-bayi" value="5000000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Biaya Tambahan / Add-on -->
+          <div class="form-group">
+            <label for="input-biaya-tambahan">Biaya Tambahan / Add-on (IDR)</label>
+            <div class="input-prefix">
+              <span>Rp</span>
+              <input type="number" id="input-biaya-tambahan" value="0" placeholder="0">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="input-total">Total Biaya Paket (Hitung Otomatis)</label>
+            <div class="input-prefix">
+              <span>Rp</span>
+              <input type="number" id="input-total" value="35000000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="input-bayar">Nominal Dibayar Saat Ini (IDR) *</label>
+            <div class="input-prefix">
+              <span>Rp</span>
+              <input type="number" id="input-bayar" value="10000000">
+            </div>
+            <p class="helper-text">Kekurangan / Sisa Tagihan dihitung otomatis.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-jenis-bayar">Jenis Pembayaran</label>
+              <select id="input-jenis-bayar">
+                <option value="DP / Uang Muka Pendaftaran">DP / Uang Muka Pendaftaran</option>
+                <option value="Pelunasan Paket Umrah">Pelunasan Paket Umrah</option>
+                <option value="Pembayaran Cicilan Ke-2">Pembayaran Cicilan Ke-2</option>
+                <option value="Pembayaran Cicilan Ke-3">Pembayaran Cicilan Ke-3</option>
+                <option value="Tambahan Fasilitas / Custom Add-on">Tambahan Fasilitas / Add-on</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="input-metode">Metode Pembayaran</label>
+              <select id="input-metode">
+                <option value="Transfer Bank BSI">Transfer Bank BSI</option>
+                <option value="Transfer Bank BCA">Transfer Bank BCA</option>
+                <option value="Transfer Bank Mandiri">Transfer Bank Mandiri</option>
+                <option value="Tunai / Cash">Tunai / Cash</option>
+                <option value="EDC / Kartu Kredit">EDC / Kartu Kredit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="input-catatan">Catatan / Keterangan Tambahan</label>
+            <textarea id="input-catatan" placeholder="Contoh: Pembayaran DP pendaftaran 1 Dewasa + 1 Infant."></textarea>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- RIGHT PANEL: LIVE PREVIEW KWITANSI -->
+    <section class="preview-container">
+      
+      <div class="preview-toolbar no-print">
+        <span style="font-weight: 700; color: var(--theme-main); font-size: 0.9rem;">
+          Pratinjau Kwitansi Resmi Executive
+        </span>
+        <span id="view-status-badge" class="badge-status-preview badge-dp">
+          DP / BERTAHAP
+        </span>
+      </div>
+
+      <!-- KERTAS KWITANSI EXECUTION AREA -->
+      <div class="kwitansi-paper" id="kwitansi-print-area">
+        
+        <!-- Top Gradient Stripe -->
+        <div class="kwitansi-top-stripe"></div>
+
+        <div class="kwitansi-content-wrapper">
+          
+          <!-- WATERMARK STEMPEL -->
+          <div id="view-watermark-stamp" class="watermark-stamp stamp-dp">
+            DP / BERTAHAP
+          </div>
+
+          <!-- HEADER KOP SURAT EXECUTIVE -->
+          <div class="kwitansi-header">
+            <div class="kwitansi-brand">
+              <img src="marhaban.png" id="view-logo-img" alt="Marhaban Logo" class="kwitansi-logo">
+              <div class="kwitansi-company-details">
+                <h2 id="view-header-brand">Amanah Safar Marhaban</h2>
+                <div class="company-subhead" id="view-header-sub">PT AMANAH TANGGUH MANDIRI</div>
+                <div class="company-badges" id="view-company-badges">
+                  <span class="badge-licence" id="view-header-ppiu">PPIU: 23022300424760012</span>
+                  <span class="badge-licence" id="view-header-pihk">PIHK: 23022300424760013</span>
+                </div>
+                
+                <!-- CONTACT LINE WITH SOCIAL MEDIA LOGOS (WA, IG, TG) -->
+                <div class="kwitansi-contact-block" id="view-header-contact">
+                  <div class="contact-alamat" id="view-alamat-text">Jl. Hadi Mulyono, Wonosalam, Sukoharjo, Ngaglik, Sleman, DI Yogyakarta</div>
+                  <div class="social-contact-bar" id="view-social-bar">
+                    <!-- WA ICON & NUMBER -->
+                    <span class="social-item" id="view-social-wa">
+                      <svg class="social-icon icon-wa" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 4.992l-1.416 5.174 5.292-1.388c1.458.795 3.104 1.214 4.777 1.215h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.668-1.038-5.176-2.924-7.062a9.924 9.924 0 0 0-7.058-2.931zm5.882 14.288c-.247.695-1.229 1.272-1.704 1.344-.457.069-1.042.102-3.045-.724-2.562-1.056-4.214-3.666-4.341-3.836-.127-.17-1.037-1.38-1.037-2.632 0-1.252.657-1.868.891-2.122.234-.254.51-.318.68-.318.17 0 .339.002.488.009.157.007.369-.06.577.44.213.51.724 1.768.787 1.895.063.127.106.275.021.445-.085.17-.127.275-.254.424-.127.148-.267.331-.382.445-.127.127-.26.265-.112.519.148.254.657 1.085 1.41 1.756.969.863 1.787 1.13 2.041 1.257.254.127.403.106.552-.064.148-.17.636-.742.806-.996.17-.254.339-.212.573-.127.234.085 1.484.7 1.738.827.254.127.424.191.488.3.064.106.064.615-.183 1.31z"/>
+                      </svg>
+                      <span id="view-text-wa">0821-3232-3030</span>
+                    </span>
+
+                    <!-- INSTAGRAM ICON & HANDLE -->
+                    <span class="social-item" id="view-social-ig">
+                      <svg class="social-icon icon-ig" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                      <span id="view-text-ig">@marhabantour</span>
+                    </span>
+
+                    <!-- TELEGRAM ICON & HANDLE -->
+                    <span class="social-item" id="view-social-tg">
+                      <svg class="social-icon icon-tg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.75 3.99-1.74 6.66-2.89 8.01-3.46 3.81-1.59 4.6-1.87 5.12-1.87.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.03.24z"/>
+                      </svg>
+                      <span id="view-text-tg">@marhabantour</span>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <div class="kwitansi-title-card">
+              <h3>KWITANSI</h3>
+              <div class="kwitansi-no-tag" id="view-no-kwitansi">KW/MRH/2026/08/001</div>
+              <div class="kwitansi-date-tag">Tanggal: <span id="view-tanggal">29 Agustus 2026</span></div>
+            </div>
+          </div>
+
+          <!-- BODY KWITANSI (CLEAN, ELEGANT & ULTRA-READABLE) -->
+          <div class="kwitansi-body">
+            
+            <div class="info-row">
+              <span class="info-label">Telah Diterima Dari</span>
+              <span class="info-colon">:</span>
+              <span class="info-value name-large" id="view-nama-jamaah">Bpk. H. Ahmad Subandi</span>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Nomor WA / HP</span>
+              <span class="info-colon">:</span>
+              <span class="info-value" id="view-no-wa">0821-3232-3030</span>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Uang Sejumlah</span>
+              <span class="info-colon">:</span>
+              <div class="terbilang-card" id="view-terbilang">
+                "Sepuluh Juta Rupiah"
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Pilihan Paket & Kamar</span>
+              <span class="info-colon">:</span>
+              <span class="info-value" id="view-pilihan-paket">
+                Umrah Reguler Direct Flight (9 Hari) - Quad (Ber-4)
+              </span>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Jumlah Jamaah (Pax)</span>
+              <span class="info-colon">:</span>
+              <span class="info-value" id="view-jumlah-jamaah-pax">
+                1 Pax Dewasa
+              </span>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Fasilitas Termasuk</span>
+              <span class="info-colon">:</span>
+              <div class="info-value">
+                <div class="fasilitas-chips-container" id="view-fasilitas-chips">
+                  <!-- Chips inserted here -->
+                </div>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Untuk Pembayaran</span>
+              <span class="info-colon">:</span>
+              <span class="info-value">
+                <strong id="view-jenis-bayar" style="color: var(--theme-main);">DP / Uang Muka Pendaftaran</strong> via <span id="view-metode">Transfer Bank BSI</span>
+              </span>
+            </div>
+
+            <!-- FINANCIAL SUMMARY TABLE EXECUTIVE WITH PAX BREAKDOWN -->
+            <table class="financial-summary-table">
+              <thead>
+                <tr>
+                  <th>RINCIAN BIAYA PAKET & TRANSAKSI</th>
+                  <th style="text-align: right;">JUMLAH NOMINAL (IDR)</th>
+                </tr>
+              </thead>
+              <tbody id="view-table-breakdown-body">
+                <!-- Breakdown Rows Rendered Dynamically -->
+              </tbody>
+            </table>
+
+            <div class="info-row">
+              <span class="info-label">Catatan Tambahan</span>
+              <span class="info-colon">:</span>
+              <span class="info-value" id="view-catatan" style="font-size: 0.8rem; font-style: italic; color: var(--text-muted);">
+                -
+              </span>
+            </div>
+
+          </div>
+
+          <!-- FOOTER & SINGLE SIGNATURE (ADMIN MARHABAN TOUR) -->
+          <div class="kwitansi-footer">
+            
+            <div class="nominal-big-box">
+              <div class="label">Total Dibayar Saat Ini</div>
+              <div class="amount" id="view-nominal-big">Rp 10.000.000</div>
+            </div>
+
+            <div class="signature-group" style="position: relative; justify-content: flex-end;">
+              
+              <!-- DIGITAL STEMPEL OVERLAY IF UPLOADED -->
+              <img id="view-stempel-img" src="" style="display: none; position: absolute; right: 15px; bottom: 0; height: 90px; width: auto; opacity: 0.75; pointer-events: none; transform: rotate(-5deg);">
+
+              <!-- SINGLE CLEAN SIGNATURE BLOCK (ADMIN MARHABAN TOUR) -->
+              <div class="signature-box" style="width: 180px;">
+                <div class="title">Admin Marhaban Tour</div>
+                
+                <!-- TTD DIGITAL KASIR IMAGE OR TEXT -->
+                <div id="view-ttd-kasir-container" style="min-height: 40px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.25rem;">
+                  <!-- Image inserted if signature drawn/uploaded -->
+                </div>
+
+                <div class="name" id="view-ttd-kasir-nama">( Umar Al-Hasyimi )</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- NOTE FOOTER -->
+          <div class="kwitansi-note-footer">
+            <span>* Bukti pembayaran sah dan terverifikasi oleh <span id="view-note-brand">Amanah Safar Marhaban</span>.</span>
+            <span>Sistem Kwitansi Digital Marhaban</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODAL PENGATURAN KOP SURAT, TEMA & TTD
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-settings">
+    <div class="modal-content" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3>⚙️ Pengaturan Kop Surat, Sosmed & Tema</h3>
+        <button class="btn-close" id="btn-close-settings">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- SECTION TEMA WARNA -->
+        <div style="font-weight: 800; color: var(--theme-main); margin-bottom: 0.5rem; font-size: 0.95rem;">
+          🎨 Pilihan Template Warna Kwitansi
+        </div>
+        <div class="theme-selector-grid">
+          <div class="theme-card active" data-theme-val="purple">
+            <div class="theme-swatch" style="background: linear-gradient(135deg, #532380 50%, #f59e0b 50%);"></div>
+            <div>
+              <strong style="display:block; font-size:0.8rem;">Royal Purple & Gold</strong>
+              <small style="color:#64748b; font-size:0.7rem;">Warna Situs Web Sekarang</small>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme-val="black-gold">
+            <div class="theme-swatch" style="background: linear-gradient(135deg, #141414 50%, #d4af37 50%);"></div>
+            <div>
+              <strong style="display:block; font-size:0.8rem;">Classic Black & Gold</strong>
+              <small style="color:#64748b; font-size:0.7rem;">Brand Lama Marhaban</small>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme-val="navy-gold">
+            <div class="theme-swatch" style="background: linear-gradient(135deg, #0a1128 50%, #c5a059 50%);"></div>
+            <div>
+              <strong style="display:block; font-size:0.8rem;">Royal Navy & Gold</strong>
+              <small style="color:#64748b; font-size:0.7rem;">Tema Klasik Biru Emas</small>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme-val="emerald-gold">
+            <div class="theme-swatch" style="background: linear-gradient(135deg, #065f46 50%, #d4af37 50%);"></div>
+            <div>
+              <strong style="display:block; font-size:0.8rem;">Emerald Green & Gold</strong>
+              <small style="color:#64748b; font-size:0.7rem;">Tema Hijau Islami</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION KOP SURAT DETAILS -->
+        <div style="font-weight: 800; color: var(--theme-main); margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 1rem;">
+          ⚙️ Pengaturan Kop Surat (Header Travel)
+        </div>
+        <div class="form-group">
+          <label for="input-header-brand">Nama Travel / Brand</label>
+          <input type="text" id="input-header-brand" value="Amanah Safar Marhaban">
+        </div>
+        <div class="form-group">
+          <label for="input-header-sub">Nama PT / Legalitas (Kosongkan jika dihapus total)</label>
+          <input type="text" id="input-header-sub" value="PT AMANAH TANGGUH MANDIRI" placeholder="Kosongkan untuk menghapus total dari kop">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="input-header-ppiu">Izin PPIU (Kosongkan jika dihapus total)</label>
+            <input type="text" id="input-header-ppiu" value="23022300424760012" placeholder="Kosongkan untuk menghapus total">
+          </div>
+          <div class="form-group">
+            <label for="input-header-pihk">Izin PIHK (Kosongkan jika dihapus total)</label>
+            <input type="text" id="input-header-pihk" value="23022300424760013" placeholder="Kosongkan untuk menghapus total">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-header-alamat">Alamat Lengkap Kantor</label>
+          <input type="text" id="input-header-alamat" value="Jl. Hadi Mulyono, Wonosalam, Sukoharjo, Ngaglik, Sleman, DI Yogyakarta">
+        </div>
+
+        <!-- SECTION SOCIAL MEDIA & CONTACT INPUTS -->
+        <div style="font-weight: 800; color: var(--theme-main); margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 1rem;">
+          📲 Kontak WA & Media Sosial Travel
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="input-header-kontak">No. WhatsApp Official</label>
+            <input type="text" id="input-header-kontak" value="0821-3232-3030">
+          </div>
+          <div class="form-group">
+            <label for="input-header-ig">Instagram (@handle)</label>
+            <input type="text" id="input-header-ig" value="@marhabantour">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="input-header-tg">Telegram (@handle / link)</label>
+          <input type="text" id="input-header-tg" value="@marhabantour">
+        </div>
+
+        <div class="form-group">
+          <label for="input-logo-file">Upload Logo Travel Custom</label>
+          <input type="file" id="input-logo-file" accept="image/*">
+        </div>
+
+        <!-- SECTION TTD & STEMPEL -->
+        <div style="font-weight: 800; color: var(--theme-main); margin-bottom: 0.5rem; font-size: 0.95rem; margin-top: 1rem;">
+          ✍️ Tanda Tangan Digital & Stempel
+        </div>
+        <div class="form-group">
+          <label for="input-ttd-nama">Nama Penandatangan (Kasir / Admin)</label>
+          <input type="text" id="input-ttd-nama" value="Umar Al-Hasyimi">
+        </div>
+
+        <div class="form-group">
+          <label>TTD Digital Admin:</label>
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <button type="button" class="btn btn-outline" id="btn-draw-ttd" style="flex: 1; font-size: 0.75rem;">🖌️ Gambar TTD Pad</button>
+            <label class="btn btn-secondary" style="flex: 1; font-size: 0.75rem; justify-content: center; cursor: pointer; color: var(--theme-main); border-color: var(--border-color);">
+              📷 Upload TTD <input type="file" id="input-ttd-file" accept="image/*" style="display: none;">
+            </label>
+          </div>
+          <div id="ttd-preview-thumb" style="display: none; align-items: center; gap: 0.5rem; background: #f8fafc; padding: 0.4rem; border-radius: 6px;">
+            <img id="img-ttd-preview" src="" style="height: 35px; width: auto;">
+            <span style="font-size: 0.725rem; color: #166534; font-weight: 700;">✓ TTD Terpasang</span>
+            <button type="button" id="btn-clear-ttd" style="margin-left: auto; border: none; background: none; color: #ef4444; cursor: pointer; font-weight: 700;">&times;</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Stempel Resmi Perusahaan:</label>
+          <label class="btn btn-outline" style="width: 100%; font-size: 0.75rem; justify-content: center; cursor: pointer;">
+            🏵️ Upload Gambar Stempel <input type="file" id="input-stempel-file" accept="image/*" style="display: none;">
+          </label>
+          <div id="stempel-preview-thumb" style="display: none; align-items: center; gap: 0.5rem; background: #f8fafc; padding: 0.4rem; border-radius: 6px; margin-top: 0.4rem;">
+            <img id="img-stempel-preview" src="" style="height: 35px; width: auto;">
+            <span style="font-size: 0.725rem; color: #166534; font-weight: 700;">✓ Stempel Terpasang</span>
+            <button type="button" id="btn-clear-stempel" style="margin-left: auto; border: none; background: none; color: #ef4444; cursor: pointer; font-weight: 700;">&times;</button>
+          </div>
+        </div>
+
+        <div style="text-align: right; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-gold" id="btn-close-settings-save">✓ Simpan Pengaturan & Tutup</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL CANVAS GAMBAR TTD
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-draw-ttd">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3>🖌️ Gambar Tanda Tangan Kasir</h3>
+        <button class="btn-close" id="btn-close-ttd-modal">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.5rem;">Gunakan mouse atau layar sentuh untuk menggambar TTD Anda:</p>
+        <div style="border: 2px dashed #cbd5e1; border-radius: 8px; background: #fafafa; display: inline-block;">
+          <canvas id="canvas-ttd" width="440" height="180" style="touch-action: none; cursor: crosshair;"></canvas>
+        </div>
+        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+          <button type="button" class="btn btn-secondary" id="btn-clear-canvas" style="background: #ef4444; border: none;">🗑️ Hapus Pad</button>
+          <button type="button" class="btn btn-gold" id="btn-save-canvas">✓ Ganti & Gunakan TTD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL RIWAYAT TRANSAKSI
+       ========================================== -->
+  <div class="modal-backdrop" id="modal-history">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📋 Riwayat Transaksi Kwitansi Amanah Safar Marhaban</h3>
+        <button class="btn-close" id="btn-close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom: 1rem;">
+          <input type="text" id="search-history" placeholder="🔍 Cari berdasarkan Nama Jamaah, No. Kwitansi, atau Paket..." style="padding: 0.6rem 1rem;">
+        </div>
+        <table class="table-history">
+          <thead>
+            <tr>
+              <th>No. Kwitansi</th>
+              <th>Tanggal</th>
+              <th>Nama Jamaah</th>
+              <th>Paket</th>
+              <th>Nominal Dibayar</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-history">
+            <!-- Dynamic rows inserted here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

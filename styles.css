@@ -1,0 +1,1059 @@
+/* ==========================================================================
+   Kwitansi Generator - Amanah Safar Marhaban
+   Theme System & Ultra-Clean Executive Document Layout
+   Themes:
+   1. Royal Purple & Amber (#532380 & #F59E0B) - Website Sekarang
+   2. Classic Black & Gold (#141414 & #D4AF37) - Brand Lama Marhaban
+   3. Royal Navy & Gold (#0A1128 & #C5A059)
+   4. Emerald Green & Gold (#064E3B & #D4AF37)
+   ========================================================================== */
+
+:root {
+  /* Default: Royal Purple Theme */
+  --theme-darkest: #2d0c4d;
+  --theme-dark: #3b1466;
+  --theme-main: #532380;
+  --theme-medium: #6b21a8;
+  --theme-light: #9333ea;
+  --theme-soft: #f3e8ff;
+  --theme-tint: #faf5ff;
+  
+  --gold-main: #f59e0b;
+  --gold-bright: #facc15;
+  --gold-dark: #d97706;
+  --gold-soft: #fffbeb;
+
+  --text-primary: #1e1b4b;
+  --text-muted: #64748b;
+  --bg-app: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --border-active: #532380;
+}
+
+/* Theme: Classic Black & Gold (Brand Lama Marhaban) */
+[data-theme="black-gold"] {
+  --theme-darkest: #000000;
+  --theme-dark: #0a0a0a;
+  --theme-main: #141414;
+  --theme-medium: #262626;
+  --theme-light: #404040;
+  --theme-soft: #fffbf0;
+  --theme-tint: #fefcf5;
+  
+  --gold-main: #c5a059;
+  --gold-bright: #d4af37;
+  --gold-dark: #a37c28;
+  --gold-soft: #fffdf5;
+
+  --text-primary: #171717;
+  --text-muted: #525252;
+  --bg-app: #f5f5f5;
+  --card-bg: #ffffff;
+  --border-color: #e5e5e5;
+  --border-active: #c5a059;
+}
+
+/* Theme: Royal Navy & Gold */
+[data-theme="navy-gold"] {
+  --theme-darkest: #040814;
+  --theme-dark: #070d1e;
+  --theme-main: #0a1128;
+  --theme-medium: #121c3b;
+  --theme-light: #1b2850;
+  --theme-soft: #f0f4ff;
+  --theme-tint: #f8fafc;
+  
+  --gold-main: #c5a059;
+  --gold-bright: #d4af37;
+  --gold-dark: #996515;
+  --gold-soft: #fffbf0;
+
+  --text-primary: #0a1128;
+  --text-muted: #475569;
+  --bg-app: #f1f5f9;
+  --card-bg: #ffffff;
+  --border-color: #cbd5e1;
+  --border-active: #0a1128;
+}
+
+/* Theme: Emerald Green & Gold */
+[data-theme="emerald-gold"] {
+  --theme-darkest: #022c22;
+  --theme-dark: #064e3b;
+  --theme-main: #065f46;
+  --theme-medium: #047857;
+  --theme-light: #059669;
+  --theme-soft: #ecfdf5;
+  --theme-tint: #f0fdf4;
+  
+  --gold-main: #d4af37;
+  --gold-bright: #facc15;
+  --gold-dark: #b8860b;
+  --gold-soft: #fffbeb;
+
+  --text-primary: #022c22;
+  --text-muted: #4b5563;
+  --bg-app: #f0fdf4;
+  --card-bg: #ffffff;
+  --border-color: #a7f3d0;
+  --border-active: #065f46;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Navigation */
+.app-header {
+  background: linear-gradient(135deg, var(--theme-darkest) 0%, var(--theme-main) 100%);
+  color: white;
+  padding: 0.85rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--gold-main);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-logo-header {
+  height: 44px;
+  width: auto;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.brand-title-group h1 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+}
+
+.brand-title-group p {
+  font-size: 0.75rem;
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.05rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--theme-medium) 0%, var(--theme-dark) 100%);
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+  background: var(--theme-main);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-main) 100%);
+  color: var(--theme-darkest);
+  box-shadow: 0 3px 10px rgba(197, 160, 89, 0.3);
+  font-weight: 800;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.btn-outline {
+  background: #ffffff;
+  color: var(--theme-main);
+  border: 1.5px solid var(--theme-main);
+}
+
+.btn-outline:hover {
+  background: var(--theme-soft);
+}
+
+/* Main Grid Layout */
+.main-container {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  max-width: 1750px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+}
+
+@media (max-width: 1150px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Sidebar Input Form */
+.form-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border: 1px solid #e2e8f0;
+  max-height: calc(100vh - 105px);
+  overflow-y: auto;
+  position: sticky;
+  top: 85px;
+}
+
+.form-group-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.section-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--theme-main);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--theme-soft);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.form-group {
+  margin-bottom: 0.8rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+label {
+  display: block;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.525rem 0.75rem;
+  font-size: 0.835rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--theme-main);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.input-prefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-prefix span {
+  position: absolute;
+  left: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--theme-main);
+}
+
+.input-prefix input {
+  padding-left: 2.2rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  background: var(--theme-tint);
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--theme-dark);
+}
+
+.checkbox-item input {
+  accent-color: var(--theme-main);
+}
+
+.helper-text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.badge-status-preview {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.725rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-lunas {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.badge-dp {
+  background-color: var(--theme-soft);
+  color: var(--theme-main);
+  border: 1px solid var(--border-color);
+}
+
+/* PREVIEW PANEL & ULTRA-CLEAN RECEIPT */
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.preview-toolbar {
+  width: 100%;
+  max-width: 860px;
+  background: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-color);
+}
+
+.kwitansi-paper {
+  background: #ffffff;
+  width: 100%;
+  max-width: 860px;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+  position: relative;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.kwitansi-top-stripe {
+  height: 7px;
+  background: linear-gradient(90deg, var(--theme-darkest) 0%, var(--theme-main) 50%, var(--gold-main) 100%);
+  width: 100%;
+}
+
+.kwitansi-content-wrapper {
+  padding: 2.25rem 2.6rem;
+  position: relative;
+}
+
+/* Kop Surat Header */
+.kwitansi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.1rem;
+  border-bottom: 2px solid var(--theme-soft);
+  margin-bottom: 1.35rem;
+}
+
+.kwitansi-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.kwitansi-logo {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
+.kwitansi-company-details h2 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--theme-main);
+  letter-spacing: -0.2px;
+  margin-bottom: 0.1rem;
+}
+
+.company-subhead {
+  font-size: 0.765rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+.company-badges {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.badge-licence {
+  background: var(--theme-tint);
+  color: var(--theme-main);
+  border: 1px solid var(--border-color);
+  padding: 0.125rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.675rem;
+  font-weight: 700;
+}
+
+/* CONTACT & SOCIAL MEDIA LOGOS BAR */
+.kwitansi-contact-block {
+  margin-top: 0.35rem;
+}
+
+.contact-alamat {
+  font-size: 0.715rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.social-contact-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.social-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.725rem;
+  font-weight: 700;
+  color: var(--theme-dark);
+}
+
+.social-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.icon-wa {
+  color: #25D366;
+}
+
+.icon-ig {
+  color: #E1306C;
+}
+
+.icon-tg {
+  color: #0088cc;
+}
+
+.kwitansi-title-card {
+  background: var(--theme-tint);
+  border: 1.5px solid var(--border-color);
+  padding: 0.65rem 1.1rem;
+  border-radius: 10px;
+  text-align: right;
+  min-width: 200px;
+}
+
+.kwitansi-title-card h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--theme-main);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.kwitansi-no-tag {
+  font-size: 0.825rem;
+  font-weight: 800;
+  color: var(--theme-dark);
+  margin-top: 0.15rem;
+}
+
+.kwitansi-date-tag {
+  font-size: 0.715rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+/* CLEAN, ULTRA-READABLE BODY DATA ROWS */
+.kwitansi-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 165px 15px 1fr;
+  align-items: baseline;
+  padding: 0.1rem 0;
+}
+
+.info-label {
+  font-size: 0.835rem;
+  font-weight: 700;
+  color: var(--theme-main);
+}
+
+.info-colon {
+  font-weight: 800;
+  color: var(--theme-light);
+}
+
+.info-value {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.info-value.name-large {
+  font-size: 1.075rem;
+  font-weight: 800;
+  color: var(--theme-darkest);
+}
+
+/* Terbilang Box Modern & Clean */
+.terbilang-card {
+  background: linear-gradient(135deg, var(--theme-tint) 0%, #ffffff 100%);
+  border-left: 3.5px solid var(--theme-main);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.55rem 0.9rem;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--theme-dark);
+  font-size: 0.875rem;
+}
+
+.fasilitas-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.fasilitas-chip {
+  background: var(--theme-soft);
+  color: var(--theme-main);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.55rem;
+  border-radius: 5px;
+  font-size: 0.725rem;
+  font-weight: 700;
+}
+
+/* Tabel Financial Summary Executive Clean */
+.financial-summary-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.835rem;
+}
+
+.financial-summary-table th {
+  background: var(--theme-main);
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  text-align: left;
+  font-weight: 800;
+  font-size: 0.795rem;
+  letter-spacing: 0.4px;
+}
+
+.financial-summary-table td {
+  padding: 0.45rem 0.9rem;
+  border-bottom: 1px solid #f1f5f9;
+  background-color: #ffffff;
+}
+
+.financial-summary-table tr:nth-child(even) td {
+  background-color: var(--theme-tint);
+}
+
+.financial-summary-table tr.total-row td {
+  background-color: var(--theme-soft);
+  border-top: 2px solid var(--theme-main);
+  font-weight: 800;
+  color: var(--theme-darkest);
+}
+
+/* Watermark Stempel Vector Badge */
+.watermark-stamp {
+  position: absolute;
+  top: 44%;
+  right: 6%;
+  transform: rotate(-12deg);
+  border: 3px solid;
+  padding: 0.45rem 1.6rem;
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  border-radius: 12px;
+  opacity: 0.2;
+  pointer-events: none;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.stamp-lunas {
+  color: #166534;
+  border-color: #166534;
+  background: rgba(220, 252, 231, 0.5);
+}
+
+.stamp-dp {
+  color: var(--theme-main);
+  border-color: var(--theme-main);
+  background: rgba(243, 232, 255, 0.5);
+}
+
+/* Footer & Signatures Block */
+.kwitansi-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.nominal-big-box {
+  background: linear-gradient(135deg, var(--theme-darkest) 0%, var(--theme-main) 100%);
+  color: #ffffff;
+  padding: 0.65rem 1.3rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--gold-main);
+}
+
+.nominal-big-box .label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.nominal-big-box .amount {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.signature-group {
+  display: flex;
+  gap: 2.75rem;
+  text-align: center;
+}
+
+.signature-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 165px;
+}
+
+.signature-box .title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 2.85rem;
+}
+
+.signature-box .name {
+  font-weight: 800;
+  font-size: 0.815rem;
+  border-top: 1.5px solid var(--theme-main);
+  width: 100%;
+  padding-top: 0.25rem;
+  color: var(--theme-darkest);
+}
+
+.kwitansi-note-footer {
+  margin-top: 0.95rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.675rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Modals */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: white;
+  width: 92%;
+  max-width: 1000px;
+  max-height: 85vh;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.modal-header {
+  background: var(--theme-main);
+  color: white;
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--gold-main);
+}
+
+.modal-header h3 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+/* Theme Option Cards */
+.theme-selector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.theme-card {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.theme-card:hover, .theme-card.active {
+  border-color: var(--gold-main);
+  background: var(--gold-soft);
+}
+
+.theme-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.table-history {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table-history th,
+.table-history td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: left;
+}
+
+.table-history th {
+  background-color: var(--theme-tint);
+  font-weight: 800;
+  color: var(--theme-main);
+}
+
+.table-history tr:hover {
+  background-color: var(--theme-soft);
+}
+
+/* Print CSS */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 4mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #1e1b4b !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+  }
+
+  .app-header,
+  .form-card,
+  .preview-toolbar,
+  .modal-backdrop,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-container {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .preview-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .kwitansi-paper {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  .kwitansi-top-stripe {
+    height: 6px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .kwitansi-content-wrapper {
+    padding: 1.25rem 1.5rem !important;
+  }
+
+  .kwitansi-header {
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .kwitansi-logo {
+    height: 52px !important;
+  }
+
+  .kwitansi-company-details h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .kwitansi-title-card {
+    padding: 0.5rem 0.9rem !important;
+    min-width: 180px !important;
+  }
+
+  .kwitansi-title-card h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .kwitansi-body {
+    gap: 0.6rem !important;
+  }
+
+  .info-row {
+    padding: 0.05rem 0 !important;
+  }
+
+  .info-label {
+    font-size: 0.785rem !important;
+  }
+
+  .info-value {
+    font-size: 0.8rem !important;
+  }
+
+  .info-value.name-large {
+    font-size: 0.95rem !important;
+  }
+
+  .terbilang-card {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .fasilitas-chip {
+    padding: 0.1rem 0.4rem !important;
+    font-size: 0.675rem !important;
+  }
+
+  .financial-summary-table {
+    margin-top: 0.45rem !important;
+    margin-bottom: 0.45rem !important;
+    font-size: 0.775rem !important;
+  }
+
+  .financial-summary-table th {
+    padding: 0.4rem 0.75rem !important;
+  }
+
+  .financial-summary-table td {
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  .kwitansi-footer {
+    margin-top: 0.85rem !important;
+  }
+
+  .nominal-big-box {
+    padding: 0.5rem 1.15rem !important;
+  }
+
+  .nominal-big-box .amount {
+    font-size: 1.2rem !important;
+  }
+
+  .signature-box .title {
+    margin-bottom: 2.25rem !important;
+  }
+
+  .kwitansi-note-footer {
+    margin-top: 0.65rem !important;
+    padding-top: 0.35rem !important;
+    font-size: 0.625rem !important;
+  }
+
+  .watermark-stamp {
+    opacity: 0.25 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
