@@ -1,7 +1,7 @@
 /**
- * Kwitansi Generator - Amanah Safar Marhaban
+ * Kwitansi & Invoice Generator - Amanah Safar Marhaban
  * JavaScript ES6 Logic: Multi-Theme Switcher, Cloudflare D1 Database Cloud Sync (/api/kwitansi),
- * Executive Premier Kop Surat Layout, Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
+ * Executive Premier Kop Surat Layout, INVOICE Badge, Rekening Resmi Pembayaran Sah Banner & LocalStorage Resilience
  */
 
 let currentKwitansiId = null;
@@ -66,7 +66,7 @@ function generateNoKwitansi() {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const count = (getHistory().length + 1).toString().padStart(3, '0');
-  return `KW/MRH/${year}/${month}/${count}`;
+  return `INV/MRH/${year}/${month}/${count}`;
 }
 
 // DOM Loaded
@@ -765,7 +765,7 @@ async function simpanKwitansi() {
     console.log("Cloud sync fallback:", e);
   }
 
-  alert(`✓ Kwitansi ${kwitansiData.noKwitansi} berhasil disimpan ke Database Cloudflare & Riwayat Transaksi!`);
+  alert(`✓ Invoice / Kwitansi ${kwitansiData.noKwitansi} berhasil disimpan ke Database Cloudflare & Riwayat Transaksi!`);
 }
 
 function openHistoryModal() {
@@ -791,7 +791,7 @@ function renderHistoryTable(filterText = '') {
   });
 
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:#64748b;">Belum ada riwayat kwitansi tersimpan.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:2rem; color:#64748b;">Belum ada riwayat transaksi tersimpan.</td></tr>`;
     return;
   }
 
@@ -901,7 +901,7 @@ function loadKwitansi(id) {
 }
 
 async function hapusKwitansi(id) {
-  if (!confirm("Apakah Anda yakin ingin menghapus kwitansi ini dari riwayat?")) return;
+  if (!confirm("Apakah Anda yakin ingin menghapus transaksi ini dari riwayat?")) return;
   let history = getHistory();
   history = history.filter(item => item.id !== id);
   saveHistory(history);
